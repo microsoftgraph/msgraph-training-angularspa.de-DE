@@ -10,7 +10,7 @@ In diesem Lernprogramm erfahren Sie, wie Sie eine eckige Einzelseiten-app erstel
 Bevor Sie dieses Lernprogramm starten, sollte [node. js](https://nodejs.org) auf dem Entwicklungscomputer installiert sein. Wenn Sie nicht über Node. js verfügen, besuchen Sie den vorherigen Link für Downloadoptionen.
 
 > [!NOTE]
-> Dieses Lernprogramm wurde mit Node Version 10.7.0 geschrieben. Die Schritte in diesem Handbuch funktionieren möglicherweise mit anderen Versionen, jedoch nicht getestet.
+> Dieses Lernprogramm wurde mit Node Version 10.15.3 geschrieben. Die Schritte in diesem Handbuch funktionieren möglicherweise mit anderen Versionen, jedoch nicht getestet.
 
 ## <a name="feedback"></a>Feedback
 
