@@ -1,10 +1,10 @@
 # <a name="graphtutorial"></a>GraphTutorial
 
-Dieses Projekt wurde mit einer [eckigEN CLI](https://github.com/angular/angular-cli) -Version 7.1.1 generiert.
+Dieses Projekt wurde mit einer [eckigen CLI](https://github.com/angular/angular-cli) -Version 7.1.1 generiert.
 
 ## <a name="development-server"></a>Entwicklungsserver
 
-Für `ng serve` einen Entwicklungsserver ausführen. Navigieren Sie `http://localhost:4200/`zu. Die APP wird automatisch neu geladen, wenn Sie die Quelldateien ändern.
+Für `ng serve` einen Entwicklungsserver ausführen. Navigieren Sie zu `http://localhost:4200/`. Die APP wird automatisch neu geladen, wenn Sie die Quelldateien ändern.
 
 ## <a name="code-scaffolding"></a>Code Gerüst
 
@@ -14,7 +14,7 @@ Ausführen `ng generate component component-name` , um eine neue Komponente zu g
 
 Ausführen `ng build` , um das Projekt zu erstellen. Die Build-Artefakte werden im `dist/` Verzeichnis gespeichert. Verwenden Sie `--prod` die Kennzeichnung für einen Produktions-Build.
 
-## <a name="running-unit-tests"></a>DurchFühren von Komponententests
+## <a name="running-unit-tests"></a>Durchführen von Komponententests
 
 Ausführen `ng test` , um die Komponententests über [Karma](https://karma-runner.github.io)auszuführen.
 

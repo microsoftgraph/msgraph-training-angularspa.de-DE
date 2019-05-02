@@ -26,7 +26,7 @@ import { MsalModule } from '@azure/msal-angular';
 import { OAuthSettings } from '../oauth';
 ```
 
-Fügen Sie dann `MsalModule` das `imports` Array innerhalb der `@NgModule` Deklaration hinzu, und INITIALISIEREN Sie es mit der APP-ID.
+Fügen Sie dann `MsalModule` das `imports` Array innerhalb der `@NgModule` Deklaration hinzu, und initialisieren Sie es mit der APP-ID.
 
 ```TypeScript
 imports: [
@@ -323,7 +323,7 @@ Wenn Sie nun Ihre Änderungen speichern und die app starten, sollten Sie nach de
 
 Klicken Sie auf den Benutzer Avatar in der oberen rechten Ecke, **** um auf den Link abmelden zuzugreifen. Wenn **** Sie auf Abmelden klicken, wird die Sitzung zurückgesetzt, und Sie kehren zur Startseite.
 
-![Screenshot des Dropdownmenüs mit dem Link "abMelden"](./images/add-aad-auth-02.png)
+![Screenshot des Dropdownmenüs mit dem Link "Abmelden"](./images/add-aad-auth-02.png)
 
 ## <a name="storing-and-refreshing-tokens"></a>Speichern und Aktualisieren von Token
 

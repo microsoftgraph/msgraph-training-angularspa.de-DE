@@ -24,4 +24,4 @@ Wenn Sie möchten, dass das fertige Beispiel anhand dieser Übungseinheit generi
 
 ## <a name="disclaimer"></a>Verzichtserklärung
 
-**DIESER CODE wird ohne ** Gewähr bereitgestellt, weder ausdrücklich noch implizit, einschließlich impliziter Garantien der Eignung für einen bestimmten Zweck, marktGÄNGIGKEIT oder Nichtverletzung.**
+**Dieser Code wird ohne ** Gewähr bereitgestellt, weder ausdrücklich noch implizit, einschließlich impliziter Garantien der Eignung für einen bestimmten Zweck, MARKTGÄNGIGKEIT oder Nichtverletzung.**
