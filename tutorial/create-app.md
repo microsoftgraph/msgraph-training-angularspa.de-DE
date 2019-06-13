@@ -1,50 +1,50 @@
 <!-- markdownlint-disable MD002 MD041 -->
 
-Öffnen Sie die Befehlszeilenschnittstelle (CLI), navigieren Sie zu einem Verzeichnis, in dem Sie die Berechtigung zum Erstellen von Dateien haben, und führen Sie die folgenden Befehle aus, um das [eckige CLI](https://www.npmjs.com/package/@angular/cli) -Tool zu installieren und eine neue eckige APP zu erstellen.
+Öffnen Sie die Befehlszeilenschnittstelle (CLI), navigieren Sie zu einem Verzeichnis, in dem Sie Berechtigungen zum Erstellen von Dateien haben, und führen Sie die folgenden Befehle aus, um das Tool für die [eckige CLI](https://www.npmjs.com/package/@angular/cli) zu installieren und eine neue Winkel-APP zu erstellen.
 
 ```Shell
 npm install -g @angular/cli
 ng new graph-tutorial
 ```
 
-Die eckige CLI fordert weitere Informationen an. Beantworten Sie die Eingabeaufforderungen wie folgt.
+In der eckigen CLI werden weitere Informationen angefordert. Beantworten Sie die Anweisungen wie folgt.
 
 ```Shell
 ? Would you like to add Angular routing? Yes
 ? Which stylesheet format would you like to use? CSS
 ```
 
-Sobald der Befehl abgeschlossen ist, wechseln Sie `graph-tutorial` in das Verzeichnis in der CLI, und führen Sie den folgenden Befehl aus, um einen lokalen Webserver zu starten.
+Nachdem der Befehl abgeschlossen ist, wechseln Sie `graph-tutorial` in das Verzeichnis in der CLI, und führen Sie den folgenden Befehl aus, um einen lokalen Webserver zu starten.
 
 ```Shell
 ng serve --open
 ```
 
-Der Standardbrowser wird [https://localhost:4200/](https://localhost:4200) mit einer eckigen Standardseite geöffnet. Wenn Ihr Browser nicht geöffnet wird, öffnen Sie ihn, [https://localhost:4200/](https://localhost:4200) und navigieren Sie zu, um zu überprüfen, ob die neue APP funktioniert.
+Der Standardbrowser wird [https://localhost:4200/](https://localhost:4200) mit einer standardmäßigen eckigen Seite geöffnet. Wenn Ihr Browser nicht geöffnet wird, öffnen Sie ihn, [https://localhost:4200/](https://localhost:4200) und navigieren Sie zu, um zu überprüfen, ob die neue APP funktioniert.
 
-Bevor Sie fortfahren, sollten Sie einige zusätzliche Pakete installieren, die Sie später verwenden werden:
+Bevor Sie fortfahren, installieren Sie einige zusätzliche Pakete, die Sie später verwenden werden:
 
 - [Bootstrap](https://github.com/twbs/bootstrap) für Styling und allgemeine Komponenten.
 - [ng-Bootstrap](https://github.com/ng-bootstrap/ng-bootstrap) für die Verwendung von Bootstrap-Komponenten aus eckig.
-- [eckig-fontawesome](https://github.com/FortAwesome/angular-fontawesome) zur Verwendung von fontawesome-Symbolen in eckiger.
-- [fontawesome-SVG-Core](https://github.com/FortAwesome/Font-Awesome), [Free-Regular-SVG-Icons](https://github.com/FortAwesome/Font-Awesome)und [Free-Solid-SVG-Icons](https://github.com/FortAwesome/Font-Awesome) für die im Beispiel verwendeten fontawesome-Symbole.
-- [Moment](https://github.com/moment/moment) für das Formatieren von Datums-und Uhrzeitangaben.
-- [msal-eckig](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) für die Authentifizierung bei Azure Active Directory und das Abrufen von Zugriffstoken.
-- [rxjs-compat](https://github.com/ReactiveX/rxjs/tree/master/compat), für das `msal-angular` Paket erforderlich.
-- [Microsoft-Graph-Client](https://github.com/microsoftgraph/msgraph-sdk-javascript) für Aufrufe von Microsoft Graph.
+- [Winkel-fontawesome](https://github.com/FortAwesome/angular-fontawesome) zum Verwenden von fontawesome-Symbolen in eckig.
+- [fontawesome-SVG-Core](https://github.com/FortAwesome/Font-Awesome), [Free-Regular-SVG-Icons](https://github.com/FortAwesome/Font-Awesome)und [Free-Solid-SVG-Icons](https://github.com/FortAwesome/Font-Awesome) für die fontawesome-Symbole, die im Beispiel verwendet werden.
+- [Zeitpunkt](https://github.com/moment/moment) für die Formatierung von Datums-und Uhrzeitangaben.
+- [msal-Winkel](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) für die Authentifizierung bei Azure Active Directory und zum Abrufen von Zugriffstoken.
+- [rxjs-compat](https://github.com/ReactiveX/rxjs/tree/master/compat), erforderlich für das `msal-angular` Paket.
+- [Microsoft-Graph-Client](https://github.com/microsoftgraph/msgraph-sdk-javascript) zum tätigen von Anrufen an Microsoft Graph.
 
 Führen Sie den folgenden Befehl in der CLI aus.
 
 ```Shell
-npm install bootstrap@4.3.1 @fortawesome/angular-fontawesome@0.3.0 @fortawesome/fontawesome-svg-core@1.2.15
-npm install @fortawesome/free-regular-svg-icons@5.7.2 @fortawesome/free-solid-svg-icons@5.7.2
-npm install moment@2.24.0 moment-timezone@0.5.23 @ng-bootstrap/ng-bootstrap@4.1.0
-npm install @azure/msal-angular@0.1.2 rxjs-compat@6.4.0 @microsoft/microsoft-graph-client@1.4.0
+npm install bootstrap@4.3.1 @fortawesome/angular-fontawesome@0.3.0 @fortawesome/fontawesome-svg-core@1.2.17
+npm install @fortawesome/free-regular-svg-icons@5.8.1 @fortawesome/free-solid-svg-icons@5.8.1
+npm install moment@2.24.0 moment-timezone@0.5.25 @ng-bootstrap/ng-bootstrap@4.1.2
+npm install @azure/msal-angular@0.1.2 rxjs-compat@6.5.1 @microsoft/microsoft-graph-client@1.6.0
 ```
 
 ## <a name="design-the-app"></a>Entwerfen der APP
 
-Beginnen Sie, indem Sie die Bootstrap-CSS-Dateien der APP sowie einige globale Formatvorlagen hinzufügen. Öffnen Sie `./src/styles.css` die, und fügen Sie die folgenden Zeilen hinzu.
+Beginnen Sie mit dem Hinzufügen der Bootstrap-CSS-Dateien zur APP sowie einigen globalen Formatvorlagen. Öffnen Sie `./src/styles.css` die, und fügen Sie die folgenden Zeilen hinzu.
 
 ```CSS
 @import "~bootstrap/dist/css/bootstrap.css";
@@ -62,7 +62,7 @@ body {
 }
 ```
 
-Als Nächstes fügen Sie die Bootstrap-und FontAwesome-Module zur APP hinzu. Öffnen `./src/app/app.module.ts` Sie und fügen Sie `import` die folgenden Anweisungen am Anfang der Datei.
+Als Nächstes fügen Sie die Bootstrap-und FontAwesome-Module zur APP hinzu. Öffnen `./src/app/app.module.ts` Sie und fügen Sie `import` die folgenden Anweisungen am Anfang der Datei hinzu.
 
 ```TypeScript
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -90,13 +90,13 @@ imports: [
 ]
 ```
 
-Erstellen Sie nun eine eckige Komponente für die obere Navigationsleiste auf der Seite. Führen Sie in der CLI den folgenden Befehl aus.
+Erstellen Sie jetzt eine Winkel Komponente für die obere Navigationsleiste auf der Seite. Führen Sie in der CLI den folgenden Befehl aus.
 
 ```Shell
 ng generate component nav-bar
 ```
 
-Sobald der Befehl abgeschlossen ist, öffnen `./src/app/nav-bar/nav-bar.component.ts` Sie die Datei, und ersetzen Sie Ihren Inhalt durch Folgendes.
+Nachdem der Befehl abgeschlossen ist, öffnen `./src/app/nav-bar/nav-bar.component.ts` Sie die Datei, und ersetzen Sie Ihren Inhalt durch Folgendes.
 
 ```TypeScript
 import { Component, OnInit } from '@angular/core';
@@ -146,7 +146,7 @@ export class NavBarComponent implements OnInit {
 }
 ```
 
-Öffnen Sie `./src/app/nav-bar/nav-bar.component.html` die Datei, und ersetzen Sie Ihren Inhalt durch Folgendes.
+Öffnen Sie `./src/app/nav-bar/nav-bar.component.html` die Datei, und ersetzen Sie den Inhalt durch Folgendes.
 
 ```html
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -199,13 +199,13 @@ export class NavBarComponent implements OnInit {
 </nav>
 ```
 
-Erstellen Sie als nächstes eine Homepage für die app. Führen Sie den folgenden Befehl in der CLI aus.
+Erstellen Sie als nächstes eine Startseite für die app. Führen Sie den folgenden Befehl in der CLI aus.
 
 ```Shell
 ng generate component home
 ```
 
-Sobald der Befehl abgeschlossen ist, öffnen `./src/app/home/home.component.ts` Sie die Datei, und ersetzen Sie Ihren Inhalt durch Folgendes.
+Nachdem der Befehl abgeschlossen ist, öffnen `./src/app/home/home.component.ts` Sie die Datei, und ersetzen Sie Ihren Inhalt durch Folgendes.
 
 ```TypeScript
 import { Component, OnInit } from '@angular/core';
@@ -240,7 +240,7 @@ export class HomeComponent implements OnInit {
 }
 ```
 
-Öffnen Sie dann `./src/app/home/home.component.html` die Datei, und ersetzen Sie Ihren Inhalt durch Folgendes.
+Öffnen Sie dann `./src/app/home/home.component.html` die Datei, und ersetzen Sie den Inhalt durch Folgendes.
 
 ```html
 <div class="jumbotron">
@@ -257,7 +257,7 @@ export class HomeComponent implements OnInit {
 </div>
 ```
 
-Erstellen Sie jetzt einen Warnungsdienst, den die APP zum Anzeigen von Nachrichten für den Benutzer verwenden kann. Erstellen Sie zunächst eine einfache `Alert` Klasse. Erstellen Sie eine neue Datei im `./src/app` Verzeichnis mit `alert.ts` dem Namen, und fügen Sie den folgenden Code hinzu.
+Erstellen Sie nun einen Warnungsdienst, den die APP zum Anzeigen von Nachrichten an den Benutzer verwenden kann. Beginnen Sie mit dem Erstellen `Alert` einer einfachen Klasse. Erstellen Sie eine neue Datei im `./src/app` Verzeichnis mit `alert.ts` dem Namen, und fügen Sie den folgenden Code hinzu.
 
 ```TypeScript
 export class Alert {
@@ -272,7 +272,7 @@ Führen Sie in der CLI den folgenden Befehl aus.
 ng generate service alerts
 ```
 
-Öffnen Sie `./src/app/alerts.service.ts` die Datei, und ersetzen Sie Ihren Inhalt durch Folgendes.
+Öffnen Sie `./src/app/alerts.service.ts` die Datei, und ersetzen Sie den Inhalt durch Folgendes.
 
 ```TypeScript
 import { Injectable } from '@angular/core';
@@ -295,13 +295,13 @@ export class AlertsService {
 }
 ```
 
-Generieren Sie jetzt eine Warnungs Komponente, um Warnungen anzuzeigen. Führen Sie in der CLI den folgenden Befehl aus.
+Generieren Sie jetzt eine Alerts-Komponente zum Anzeigen von Warnungen. Führen Sie in der CLI den folgenden Befehl aus.
 
 ```Shell
 ng generate component alerts
 ```
 
-Sobald der Befehl abgeschlossen ist, öffnen `./src/app/alerts/alerts.component.ts` Sie die Datei, und ersetzen Sie Ihren Inhalt durch Folgendes.
+Nachdem der Befehl abgeschlossen ist, öffnen `./src/app/alerts/alerts.component.ts` Sie die Datei, und ersetzen Sie Ihren Inhalt durch Folgendes.
 
 ```TypeScript
 import { Component, OnInit } from '@angular/core';
@@ -326,7 +326,7 @@ export class AlertsComponent implements OnInit {
 }
 ```
 
-Öffnen Sie dann `./src/app/alerts/alerts.component.html` die Datei, und ersetzen Sie Ihren Inhalt durch Folgendes.
+Öffnen Sie dann `./src/app/alerts/alerts.component.html` die Datei, und ersetzen Sie den Inhalt durch Folgendes.
 
 ```html
 <div *ngFor="let alert of alertsService.alerts">
@@ -337,7 +337,7 @@ export class AlertsComponent implements OnInit {
 </div>
 ```
 
-Aktualisieren Sie nun mit diesen grundlegenden Komponenten die APP, um Sie zu verwenden. Öffnen Sie zunächst die `./src/app/app-routing.module.ts` Datei, und ersetzen `const routes: Routes = [];` Sie die-Codezeile durch den folgenden Code.
+Nachdem diese grundlegenden Komponenten definiert wurden, aktualisieren Sie die APP, um Sie zu verwenden. Öffnen Sie zuerst die `./src/app/app-routing.module.ts` Datei, und ersetzen `const routes: Routes = [];` Sie die-Codezeile durch den folgenden Code.
 
 ```TypeScript
 import { HomeComponent } from './home/home.component';
@@ -359,4 +359,4 @@ const routes: Routes = [
 
 Speichern Sie alle Änderungen, und aktualisieren Sie die Seite. Nun sollte die APP sehr unterschiedlich aussehen.
 
-![Screenshot der neu gestalteten Homepage](images/create-app-01.png)
+![Screenshot der neu gestalteten Startseite](images/create-app-01.png)
