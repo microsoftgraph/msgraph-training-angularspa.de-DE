@@ -22,10 +22,14 @@ Wenn Sie das fertige Beispiel nur generieren möchten, indem Sie dieser Übungse
 
 - [Fertig gestelltes Projekt](demos/03-add-msgraph)
 
+## <a name="watch-the-module"></a>Modul ansehen
+
+Dieses Modul wurde aufgezeichnet und steht im Office-Entwicklungs Kanal YouTube zur Verfügung: [Erstellen von eckigen Spas mit Microsoft Graph](https://youtu.be/KUPRTTOUzz8)
+
 ## <a name="contributors"></a>Mitwirkende
 
-|       Rollen       |                                     Autor (en)                                     |
-| ----------------- | --------------------------------------------------------------------------------- |
+|       Rollen       |                                           Autor (en)                                           |
+| ----------------- | --------------------------------------------------------------------------------------------- |
 | Code/Tutorial   | Jason Johnston (Microsoft) [@jasonjoh](//github.com/jasonjoh)                                 |
 | Folien            | Jeremy den (Microsoft) [@jthake-MSFT](//github.com/jthake-msft)                             |
 | QA                | Andrew Connell (Microsoft MVP, Voitanos) [@andrewconnell](//github.com/andrewconnell)         |
@@ -34,13 +38,14 @@ Wenn Sie das fertige Beispiel nur generieren möchten, indem Sie dieser Übungse
 
 ## <a name="version-history"></a>Versionsverlauf
 
-| Version |       Datum       |              Kommentare              |
-| ------- | ---------------- | ---------------------------------- |
-| 1.4     | 24. Mai 2019     | 2019Q4-Inhaltsaktualisierung             |
-| 1.3     | 6. Mai 2019      | Aktualisierte Schritte der Aad-App-Registrierung |
-| 1.2     | 18. März 2019   | 2019Q3-Inhaltsaktualisierung             |
-| 1.1     | 8. Februar 2019 | Folien hinzugefügt                       |
-| 1.0     | 2018             | Veröffentlicht                          |
+| Version |       Datum       |                     Kommentare                     |
+| ------- | ---------------- | ------------------------------------------------ |
+| 1.5     | 18. Juni 2019    | Readme in aktualisierte Screencast-Aufzeichnung aktualisiert |
+| 1.4     | 24. Mai 2019     | 2019Q4-Inhaltsaktualisierung                           |
+| 1.3     | 6. Mai 2019      | Aktualisierte Schritte der Aad-App-Registrierung               |
+| 1.2     | 18. März 2019   | 2019Q3-Inhaltsaktualisierung                           |
+| 1.1     | 8. Februar 2019 | Folien hinzugefügt                                     |
+| 1.0     | 2018             | Veröffentlicht                                        |
 
 ## <a name="disclaimer"></a>Verzichtserklärung
 
