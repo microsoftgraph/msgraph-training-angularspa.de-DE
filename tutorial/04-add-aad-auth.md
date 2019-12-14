@@ -126,7 +126,7 @@ Nachdem Sie nun über den Authentifizierungsdienst verfügen, kann er in die Kom
 - Fügen `import { AuthService } from '../auth.service';` Sie am Anfang der Datei hinzu.
 - Entfernen Sie `authenticated` die `user` Eigenschaften and aus der Klasse, und entfernen Sie den Code, in `ngOnInit`dem Sie festgelegt werden.
 - Injizieren Sie `AuthService` den, indem Sie den folgenden Parameter `constructor`hinzu `private authService: AuthService`fügen:.
-- Ersetzen Sie die `signIn` vorhandene Methode durch Folgendes:
+- Ersetzen Sie zunächst die vorhandene `signIn`-Methode durch Folgendes:
 
     ```TypeScript
     async signIn(): Promise<void> {
@@ -134,7 +134,7 @@ Nachdem Sie nun über den Authentifizierungsdienst verfügen, kann er in die Kom
     }
     ```
 
-- Ersetzen Sie die `signOut` vorhandene Methode durch Folgendes:
+- Ersetzen Sie zunächst die vorhandene `signOut`-Methode durch Folgendes:
 
     ```TypeScript
     signOut(): void {
@@ -233,7 +233,7 @@ export class HomeComponent implements OnInit {
 
 Erstellen Sie schließlich dieselben ersetzen `./src/app/home/home.component.html` , die Sie für die Navigationsleiste vorgenommen haben.
 
-Speichern Sie Ihre Änderungen, und aktualisieren Sie den Browser. Klicken Sie auf die Schaltfläche **Klicken Sie hier, um** sich anzumelden `https://login.microsoftonline.com`, und Sie sollten zu umgeleitet werden. Melden Sie sich mit Ihrem Microsoft-Konto an, und stimmen Sie den angeforderten Berechtigungen zu. Die APP-Seite sollte aktualisiert werden, wobei das Token angezeigt wird.
+Speichern Sie Ihre Änderungen, und aktualisieren Sie den Browser. Klicken Sie auf die Schaltfläche **Klicken Sie hier, um sich anzumelden** , und Sie sollten zu `https://login.microsoftonline.com`umgeleitet werden. Melden Sie sich mit Ihrem Microsoft-Konto an, und stimmen Sie den angeforderten Berechtigungen zu. Die APP-Seite sollte aktualisiert werden, wobei das Token angezeigt wird.
 
 ### <a name="get-user-details"></a>Abrufen von Benutzer Details
 
@@ -280,6 +280,13 @@ private async getUser(): Promise<User> {
 }
 ```
 
+Suchen und entfernen Sie den folgenden Code in `getAccessToken` der-Methode, die eine Warnung hinzufügt, um das Zugriffstoken anzuzeigen.
+
+```TypeScript
+// Temporary to display token in an error box
+if (result) this.alertsService.add('Token acquired', result);
+```
+
 Suchen Sie den folgenden Code aus der `signIn` -Methode, und entfernen Sie ihn.
 
 ```TypeScript
@@ -321,7 +328,7 @@ Wenn Sie nun Ihre Änderungen speichern und die app starten, sollten Sie nach de
 
 ![Ein Screenshot der Startseite nach der Anmeldung](./images/add-aad-auth-01.png)
 
-Klicken Sie in der oberen rechten Ecke auf den Avatar des Benutzers **** , um auf den Abmeldelink zuzugreifen. Durch **** klicken auf Abmelden wird die Sitzung zurückgesetzt, und Sie kehren zur Startseite zurück.
+Klicken Sie in der oberen rechten Ecke auf den Avatar des Benutzers, um auf den **Abmelde** Link zuzugreifen. Durch Klicken auf **Abmelden** wird die Sitzung zurückgesetzt, und Sie kehren zur Startseite zurück.
 
 ![Screenshot des Dropdownmenüs mit dem Link zum Abmelden](./images/add-aad-auth-02.png)
 
