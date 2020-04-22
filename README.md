@@ -4,23 +4,15 @@ In diesem Modul erfahren Sie, wie Sie mit Microsoft Graph zusammenarbeiten, um e
 
 ## <a name="lab---angular-single-page-apps-with-the-microsoft-graph"></a>Lab-eckige Einzelseiten-apps mit Microsoft Graph
 
-In dieser Übungseinheit erstellen Sie eine Winkel einseitige Anwendung, die mit Azure Active Directory (Azure AD) für die Authentifizierung #a0 Autorisierung konfiguriert wird, die mithilfe von Microsoft Graph auf Daten in Office 365 zugreift.
+In dieser Übungseinheit erstellen Sie eine Winkel einseitige Anwendung, die mit Azure Active Directory (Azure AD) für die Authentifizierung & Autorisierung konfiguriert wird, die mithilfe von Microsoft Graph auf Daten in Office 365 zugreift.
 
 - [Eckiges Microsoft Graph-Lernprogramm](https://docs.microsoft.com/graph/tutorials/angular)
-
-## <a name="demos"></a>Demos
-
-Das [Demos](demos) -Verzeichnis in diesem Repository enthält Kopien des Projekts, die dem Ausführen einzelner Abschnitte des Lernprogramms entsprechen. Wenn Sie lediglich einen bestimmten Abschnitt des Lernprogramms Demo ausführen möchten, können Sie mit der Version aus dem vorherigen Abschnitt beginnen.
-
-- [01-Create-App](demos/01-create-app): abgeschlossen [Erstellen einer eckigen Einzelseiten-App](https://docs.microsoft.com/graph/tutorials/angular?tutorial-step=1)
-- [02-Add-Aad-auth](demos/02-add-aad-auth): abgeschlossene [Add Azure AD-Authentifizierung](https://docs.microsoft.com/graph/tutorials/angular?tutorial-step=3)
-- [03-Add-MSGraph](demos/03-add-msgraph): abgeschlossene [Abrufen von Kalenderdaten](https://docs.microsoft.com/graph/tutorials/angular?tutorial-step=4)
 
 ## <a name="completed-sample"></a>Abgeschlossenes Beispiel
 
 Wenn Sie das fertige Beispiel nur generieren möchten, indem Sie dieser Übungseinheit folgen, können Sie es hier finden.
 
-- [Fertig gestelltes Projekt](demos/03-add-msgraph)
+- [Fertig gestelltes Projekt](demo)
 
 ## <a name="watch-the-module"></a>Modul ansehen
 
@@ -40,7 +32,8 @@ Dieses Modul wurde aufgezeichnet und steht im Office-Entwicklungs Kanal YouTube 
 
 | Version |       Datum       |                     Kommentare                     |
 | ------- | ---------------- | ------------------------------------------------ |
-| 1.5     | 18. Juni 2019    | Readme in aktualisierte Screencast-Aufzeichnung aktualisiert |
+| 1.6     | 16. März 2020   | Aktualisiertes Beispiel für die neuesten Versionen                |
+| 1,5     | 18. Juni 2019    | Readme in aktualisierte Screencast-Aufzeichnung aktualisiert |
 | 1.4     | 24. Mai 2019     | 2019Q4-Inhaltsaktualisierung                           |
 | 1.3     | 6. Mai 2019      | Aktualisierte Schritte der Aad-App-Registrierung               |
 | 1.2     | 18. März 2019   | 2019Q3-Inhaltsaktualisierung                           |
@@ -49,4 +42,4 @@ Dieses Modul wurde aufgezeichnet und steht im Office-Entwicklungs Kanal YouTube 
 
 ## <a name="disclaimer"></a>Verzichtserklärung
 
-**Dieser Code wird ohne ** jegliche ausdrückliche oder implizite Gewährleistung bereitgestellt, einschließlich impliziter Garantien für die Eignung für einen bestimmten Zweck, die Marktgängigkeit oder die Nichtverletzung.**
+**Dieser Code wird ohne jegliche ausdrückliche oder implizite *Gewährleistung bereit* gestellt, einschließlich impliziter Garantien für die Eignung für einen bestimmten Zweck, die Marktgängigkeit oder die Nichtverletzung.**
