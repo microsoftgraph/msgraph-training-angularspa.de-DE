@@ -7,7 +7,7 @@ In diesem Lernprogramm erfahren Sie, wie Sie eine eckige Einzelseiten-app erstel
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie mit diesem Lernprogramm beginnen, sollten Sie [node. js](https://nodejs.org) auf Ihrem Entwicklungscomputer installiert haben. Wenn Sie nicht über Node. js verfügen, besuchen Sie den vorherigen Link für Downloadoptionen.
+Bevor Sie mit diesem Lernprogramm beginnen, sollten Sie [Node.js](https://nodejs.org) auf dem Entwicklungscomputer installiert haben. Wenn Sie nicht über Node.js verfügen, besuchen Sie den vorherigen Link für Downloadoptionen.
 
 Sie sollten auch über ein persönliches Microsoft-Konto mit einem Postfach auf Outlook.com oder ein Microsoft-Arbeits-oder Schulkonto verfügen. Wenn Sie kein Microsoft-Konto haben, gibt es mehrere Optionen, um ein kostenloses Konto zu erhalten:
 
@@ -15,7 +15,7 @@ Sie sollten auch über ein persönliches Microsoft-Konto mit einem Postfach auf 
 - Sie können sich [für das Office 365 Entwicklerprogramm registrieren](https://developer.microsoft.com/office/dev-program) , um ein kostenloses Office 365-Abonnement zu erhalten.
 
 > [!NOTE]
-> Dieses Lernprogramm wurde mit Node Version 12.16.1 geschrieben. Die Schritte in diesem Leitfaden funktionieren möglicherweise mit anderen Versionen, jedoch nicht getestet.
+> Dieses Lernprogramm wurde mit Node Version 12.18.4 geschrieben. Die Schritte in diesem Leitfaden funktionieren möglicherweise mit anderen Versionen, jedoch nicht getestet.
 
 ## <a name="watch-the-tutorial"></a>Das Lernprogramm ansehen
 

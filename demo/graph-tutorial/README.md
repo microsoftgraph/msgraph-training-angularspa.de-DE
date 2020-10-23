@@ -1,18 +1,18 @@
 # <a name="graphtutorial"></a>GraphTutorial
 
-Dieses Projekt wurde mit einer [eckigen CLI](https://github.com/angular/angular-cli) -Version 9.0.6 generiert.
+Dieses Projekt wurde mit einer [eckigen CLI](https://github.com/angular/angular-cli) -Version 10.1.7 generiert.
 
 ## <a name="development-server"></a>Entwicklungsserver
 
-Für `ng serve` einen Entwicklungsserver ausführen. Navigieren Sie zu `http://localhost:4200/`. Die APP wird automatisch neu laden, wenn Sie eine der Quelldateien ändern.
+`ng serve`Für einen Entwicklungsserver ausführen. Navigieren Sie zu `http://localhost:4200/`. Die APP wird automatisch neu laden, wenn Sie eine der Quelldateien ändern.
 
 ## <a name="code-scaffolding"></a>Code Gerüste
 
-Ausführen `ng generate component component-name` , um eine neue Komponente zu generieren. Sie können auch verwenden `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Ausführen `ng generate component component-name` , um eine neue Komponente zu generieren. Sie können auch verwenden `ng generate directive|pipe|service|class|guard|interface|enum|module` .
 
 ## <a name="build"></a>Erstellen
 
-Ausführen `ng build` , um das Projekt zu erstellen. Die Erstellungs Artefakte werden im `dist/` Verzeichnis gespeichert. Verwenden Sie `--prod` das Flag für einen Produktions-Build.
+Ausführen `ng build` , um das Projekt zu erstellen. Die Erstellungs Artefakte werden im `dist/` Verzeichnis gespeichert. Verwenden Sie das `--prod` Flag für einen Produktions-Build.
 
 ## <a name="running-unit-tests"></a>Durchführen von Komponententests
 
@@ -24,4 +24,4 @@ Ausführen `ng e2e` , um die End-to-End-Tests über [Protractor](http://www.prot
 
 ## <a name="further-help"></a>Weitere Hilfe
 
-Weitere Hilfe zur Winkel-CLI-Verwendung `ng help` erhalten Sie, oder gehen Sie zur [eckigen CLI-Infodatei](https://github.com/angular/angular-cli/blob/master/README.md).
+Weitere Hilfe zur Winkel-CLI-Verwendung erhalten Sie, `ng help` oder gehen Sie zur [eckigen CLI-Infodatei](https://github.com/angular/angular-cli/blob/master/README.md).

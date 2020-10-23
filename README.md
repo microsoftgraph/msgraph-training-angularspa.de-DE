@@ -32,6 +32,7 @@ Dieses Modul wurde aufgezeichnet und steht im Office-Entwicklungs Kanal YouTube 
 
 | Version |       Datum       |                     Kommentare                     |
 | ------- | ---------------- | ------------------------------------------------ |
+| 1.7     | 22. Oktober 2020 | Aktualisiertes Beispiel für die neuesten Versionen                |
 | 1.6     | 16. März 2020   | Aktualisiertes Beispiel für die neuesten Versionen                |
 | 1,5     | 18. Juni 2019    | Readme in aktualisierte Screencast-Aufzeichnung aktualisiert |
 | 1.4     | 24. Mai 2019     | 2019Q4-Inhaltsaktualisierung                           |
@@ -40,6 +41,6 @@ Dieses Modul wurde aufgezeichnet und steht im Office-Entwicklungs Kanal YouTube 
 | 1.1     | 8. Februar 2019 | Folien hinzugefügt                                     |
 | 1.0     | 2018             | Veröffentlicht                                        |
 
-## <a name="disclaimer"></a>Verzichtserklärung
+## <a name="disclaimer"></a>Haftungsausschluss
 
 **Dieser Code wird ohne jegliche ausdrückliche oder implizite *Gewährleistung bereit* gestellt, einschließlich impliziter Garantien für die Eignung für einen bestimmten Zweck, die Marktgängigkeit oder die Nichtverletzung.**

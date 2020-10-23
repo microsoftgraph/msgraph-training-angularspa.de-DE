@@ -2,25 +2,25 @@
 
 In dieser Übung erweitern Sie die Anwendung aus der vorherigen Übung, um die Authentifizierung mit Azure AD zu unterstützen. Dies ist erforderlich, um das erforderliche OAuth-Zugriffstoken zum Aufrufen von Microsoft Graph zu erhalten. In diesem Schritt werden Sie die [Microsoft-Authentifizierungsbibliothek für eckig](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) in die Anwendung integrieren.
 
-1. Erstellen Sie eine neue Datei im `./src` Verzeichnis mit `oauth.ts` dem Namen, und fügen Sie den folgenden Code hinzu.
+1. Erstellen Sie eine neue Datei im Verzeichnis **./src** mit dem Namen **OAuth. TS** , und fügen Sie den folgenden Code hinzu.
 
-    :::code language="typescript" source="../demo/graph-tutorial/src/oauth.ts.example":::
+    :::code language="typescript" source="../demo/graph-tutorial/src/oauth.example.ts":::
 
-    Ersetzen `YOUR_APP_ID_HERE` Sie durch die Anwendungs-ID aus dem Anwendungs Registrierungs Portal.
+    Ersetzen Sie `YOUR_APP_ID_HERE` durch die Anwendungs-ID aus dem Anwendungs Registrierungs Portal.
 
     > [!IMPORTANT]
-    > Wenn Sie die Quellcodeverwaltung wie git verwenden, wäre es jetzt ein guter Zeitpunkt, die Datei `oauth.ts` aus der Quellcodeverwaltung auszuschließen, um unbeabsichtigtes Auslaufen ihrer APP-ID zu vermeiden.
+    > Wenn Sie die Quellcodeverwaltung wie git verwenden, wäre es jetzt ein guter Zeitpunkt, die Datei **OAuth. TS** aus der Quellcodeverwaltung auszuschließen, um unbeabsichtigtes Auslaufen ihrer APP-ID zu vermeiden.
 
-1. Öffnen `./src/app/app.module.ts` Sie und fügen Sie `import` die folgenden Anweisungen am Anfang der Datei hinzu.
+1. Öffnen Sie **/src/App/app.Module.TS** , und fügen Sie die folgenden `import` Anweisungen am Anfang der Datei hinzu.
 
-    ```TypeScript
+    ```typescript
     import { MsalModule } from '@azure/msal-angular';
     import { OAuthSettings } from '../oauth';
     ```
 
-1. Fügen Sie `MsalModule` das dem `imports` -Array innerhalb `@NgModule` der Deklaration hinzu, und initialisieren Sie es mit der APP-ID.
+1. Fügen Sie das dem- `MsalModule` `imports` Array innerhalb der `@NgModule` Deklaration hinzu, und initialisieren Sie es mit der APP-ID.
 
-    :::code language="typescript" source="../demo/graph-tutorial/src/app/app.module.ts" id="imports":::
+    :::code language="typescript" source="../demo/graph-tutorial/src/app/app.module.ts" id="imports" highlight="6-11":::
 
 ## <a name="implement-sign-in"></a>Implementieren der Anmeldung
 
@@ -34,9 +34,9 @@ In diesem Abschnitt erstellen Sie einen Authentifizierungsdienst und implementie
 
     Wenn Sie einen Dienst dafür erstellen, können Sie ihn einfach in alle Komponenten einfügen, die Zugriff auf Authentifizierungsmethoden benötigen.
 
-1. Nachdem der Befehl abgeschlossen ist, öffnen `./src/app/auth.service.ts` Sie die Datei, und ersetzen Sie den Inhalt durch den folgenden Code.
+1. Nachdem der Befehl abgeschlossen ist, öffnen Sie **./src/App/auth.Service.TS** , und ersetzen Sie den Inhalt durch den folgenden Code.
 
-    ```TypeScript
+    ```typescript
     import { Injectable } from '@angular/core';
     import { MsalService } from '@azure/msal-angular';
 
@@ -65,15 +65,16 @@ In diesem Abschnitt erstellen Sie einen Authentifizierungsdienst und implementie
       async signIn(): Promise<void> {
         let result = await this.msalService.loginPopup(OAuthSettings)
           .catch((reason) => {
-            this.alertsService.add('Login failed', JSON.stringify(reason, null, 2));
+            this.alertsService.addError('Login failed', JSON.stringify(reason, null, 2));
           });
 
         if (result) {
           this.authenticated = true;
           // Temporary placeholder
           this.user = new User();
-          this.user.displayName = "Adele Vance";
-          this.user.email = "AdeleV@contoso.com";
+          this.user.displayName = 'Adele Vance';
+          this.user.email = 'AdeleV@contoso.com';
+          this.user.avatar = '/assets/no-profile-photo.png';
         }
       }
 
@@ -88,74 +89,79 @@ In diesem Abschnitt erstellen Sie einen Authentifizierungsdienst und implementie
       async getAccessToken(): Promise<string> {
         let result = await this.msalService.acquireTokenSilent(OAuthSettings)
           .catch((reason) => {
-            this.alertsService.add('Get token failed', JSON.stringify(reason, null, 2));
+            this.alertsService.addError('Get token failed', JSON.stringify(reason, null, 2));
           });
 
         if (result) {
           // Temporary to display token in an error box
-          this.alertsService.add('Token acquired', result.accessToken);
+          this.alertsService.addSuccess('Token acquired', result.accessToken);
           return result.accessToken;
         }
+
+        // Couldn't get a token
+        this.authenticated = false;
         return null;
       }
     }
     ```
 
-1. Öffnen Sie `./src/app/nav-bar/nav-bar.component.ts` die Datei, und ersetzen Sie den Inhalt durch Folgendes.
+1. Öffnen Sie **./src/App/NAV-Bar/NAV-Bar.Component.TS** , und ersetzen Sie den Inhalt durch Folgendes.
 
     :::code language="typescript" source="../demo/graph-tutorial/src/app/nav-bar/nav-bar.component.ts" id="navBarSnippet" highlight="3,15-22,24,26-28,36-38,40-42":::
 
-1. Öffnen`./src/app/home/home.component.ts` Sie den Inhalt, und ersetzen Sie ihn durch den folgenden Code.
+1. Öffnen Sie **./src/App/Home/Home.Component.TS** , und ersetzen Sie den Inhalt durch Folgendes.
 
-    :::code language="typescript" source="snippets/snippets.ts" id="homeSnippet" highlight="3,12-19,21,23,25-27":::
+    :::code language="typescript" source="snippets/snippets.ts" id="homeSnippet" highlight="3,12-19,21,23,25-32":::
 
-Speichern Sie Ihre Änderungen, und aktualisieren Sie den Browser. Klicken Sie auf die Schaltfläche **Klicken Sie hier, um sich anzumelden** , und Sie sollten zu `https://login.microsoftonline.com`umgeleitet werden. Melden Sie sich mit Ihrem Microsoft-Konto an, und stimmen Sie den angeforderten Berechtigungen zu. Die APP-Seite sollte aktualisiert werden, wobei das Token angezeigt wird.
+Speichern Sie Ihre Änderungen, und aktualisieren Sie den Browser. Klicken Sie auf die Schaltfläche **Klicken Sie hier, um sich anzumelden** , und Sie sollten zu umgeleitet werden `https://login.microsoftonline.com` . Melden Sie sich mit Ihrem Microsoft-Konto an, und stimmen Sie den angeforderten Berechtigungen zu. Die APP-Seite sollte aktualisiert werden, wobei das Token angezeigt wird.
 
 ### <a name="get-user-details"></a>Benutzerdetails abrufen
 
 Der Authentifizierungsdienst legt im Moment Konstante Werte für den Anzeigenamen und die e-Mail-Adresse des Benutzers fest. Da Sie nun über ein Zugriffstoken verfügen, können Sie Benutzer Details aus Microsoft Graph abrufen, damit diese Werte dem aktuellen Benutzer entsprechen.
 
-1. Öffnen `./src/app/auth.service.ts` Sie und fügen Sie `import` die folgende Anweisung am Anfang der Datei hinzu.
+1. Öffnen Sie **/src/App/auth.Service.TS** , und fügen Sie die folgenden `import` Anweisungen am Anfang der Datei hinzu.
 
-    ```TypeScript
+    ```typescript
     import { Client } from '@microsoft/microsoft-graph-client';
+    import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
     ```
 
 1. Fügen Sie eine neue Funktion zur `AuthService`-Klasse mit dem Namen `getUser` hinzu.
 
     :::code language="typescript" source="../demo/graph-tutorial/src/app/auth.service.ts" id="getUserSnippet":::
 
-1. Suchen und entfernen Sie den folgenden Code in `getAccessToken` der-Methode, die eine Warnung hinzufügt, um das Zugriffstoken anzuzeigen.
+1. Suchen und entfernen Sie den folgenden Code in der `getAccessToken` -Methode, die eine Warnung hinzufügt, um das Zugriffstoken anzuzeigen.
 
-    ```TypeScript
+    ```typescript
     // Temporary to display token in an error box
-    this.alertsService.add('Token acquired', result);
+    this.alertsService.addSuccess('Token acquired', result);
     ```
 
-1. Suchen Sie den folgenden Code aus der `signIn` -Methode, und entfernen Sie ihn.
+1. Suchen Sie den folgenden Code aus der-Methode, und entfernen Sie ihn `signIn` .
 
-    ```TypeScript
+    ```typescript
     // Temporary placeholder
     this.user = new User();
     this.user.displayName = "Adele Vance";
     this.user.email = "AdeleV@contoso.com";
+    this.user.avatar = '/assets/no-profile-photo.png';
     ```
 
 1. Fügen Sie an seiner Stelle den folgenden Code hinzu.
 
-    ```TypeScript
+    ```typescript
     this.user = await this.getUser();
     ```
 
-    In diesem neuen Code wird das Microsoft Graph-SDK verwendet, um die Details des Benutzers abzurufen `User` , und anschließend wird ein Objekt mithilfe der vom API-Aufruf zurückgegebenen Werte erstellt.
+    In diesem neuen Code wird das Microsoft Graph-SDK verwendet, um die Details des Benutzers abzurufen, und anschließend wird ein `User` Objekt mithilfe der vom API-Aufruf zurückgegebenen Werte erstellt.
 
-1. Ändern Sie `constructor` die für `AuthService` die-Klasse, um zu überprüfen, ob der Benutzer bereits angemeldet ist, und laden Sie die Details, wenn dies der Fall ist. Ersetzen Sie das `constructor` vorhandene durch Folgendes.
+1. Ändern `constructor` Sie die für die `AuthService` -Klasse, um zu überprüfen, ob der Benutzer bereits angemeldet ist, und laden Sie die Details, wenn dies der Fall ist. Ersetzen Sie das vorhandene `constructor` durch Folgendes.
 
     :::code language="typescript" source="../demo/graph-tutorial/src/app/auth.service.ts" id="constructorSnippet" highlight="5-6":::
 
-1. Entfernen Sie den temporären Code aus `HomeComponent` der-Klasse. Öffnen Sie `./src/app/home/home.component.ts` die Datei, und ersetzen `signIn` Sie die vorhandene Funktion durch Folgendes.
+1. Entfernen Sie den temporären Code aus der `HomeComponent` -Klasse. Öffnen Sie **./src/App/Home/Home.Component.TS** , und ersetzen Sie die vorhandene `signIn` Funktion durch Folgendes.
 
-    :::code language="typescript" source="../demo/graph-tutorial/src/app/home/home.component.ts" id="signInSnippet" highlight="5-6":::
+    :::code language="typescript" source="../demo/graph-tutorial/src/app/home/home.component.ts" id="signInSnippet":::
 
 Wenn Sie nun Ihre Änderungen speichern und die app starten, sollten Sie nach der Anmeldung wieder auf der Startseite enden, aber die Benutzeroberfläche sollte sich ändern, um anzugeben, dass Sie angemeldet sind.
 
