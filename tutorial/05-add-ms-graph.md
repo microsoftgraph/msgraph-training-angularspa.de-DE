@@ -1,18 +1,18 @@
 <!-- markdownlint-disable MD002 MD041 -->
 
-In dieser Übung werden Sie das Microsoft Graph in die Anwendung integrieren. Für diese Anwendung verwenden Sie die [Microsoft-Graph-Client-](https://github.com/microsoftgraph/msgraph-sdk-javascript) Bibliothek, um Anrufe an Microsoft Graph zu tätigen.
+In dieser Übung integrieren Sie Microsoft Graph in die Anwendung. Für diese Anwendung verwenden Sie die [microsoft-graph-client-Bibliothek,](https://github.com/microsoftgraph/msgraph-sdk-javascript) um Aufrufe an Microsoft Graph zu senden.
 
 ## <a name="get-calendar-events-from-outlook"></a>Abrufen von Kalenderereignissen von Outlook
 
-1. Fügen Sie einen neuen Dienst hinzu, um alle Ihre Graph-Anrufe zu halten. Führen Sie den folgenden Befehl in der CLI aus.
+1. Fügen Sie einen neuen Dienst hinzu, um alle Ihre Graph-Aufrufe zu halten. Führen Sie den folgenden Befehl in Ihrer CLI aus.
 
     ```Shell
     ng generate service graph
     ```
 
-    Genau wie beim zuvor erstellten Authentifizierungsdienst können Sie einen Dienst für diese Komponente in alle Komponenten einfügen, die Zugriff auf Microsoft Graph benötigen.
+    Genau wie bei dem zuvor erstellten Authentifizierungsdienst können Sie einen dienst hierinjizieren, um ihn in alle Komponenten zu injizieren, die Zugriff auf Microsoft Graph benötigen.
 
-1. Nachdem der Befehl abgeschlossen ist, öffnen Sie **./src/App/Graph.Service.TS** , und ersetzen Sie den Inhalt durch Folgendes.
+1. Öffnen Sie nach Abschluss des Befehls **./src/app/graph.service.ts,** und ersetzen Sie den Inhalt durch Folgendes.
 
     ```typescript
     import { Injectable } from '@angular/core';
@@ -37,7 +37,7 @@ In dieser Übung werden Sie das Microsoft Graph in die Anwendung integrieren. F�
         this.graphClient = Client.init({
           authProvider: async (done) => {
             // Get the token from the auth service
-            let token = await this.authService.getAccessToken()
+            const token = await this.authService.getAccessToken()
               .catch((reason) => {
                 done(reason, null);
               });
@@ -52,13 +52,13 @@ In dieser Übung werden Sie das Microsoft Graph in die Anwendung integrieren. F�
         });
       }
 
-      async getCalendarView(start: string, end: string, timeZone: string): Promise<MicrosoftGraph.Event[]> {
+      async getCalendarView(start: string, end: string, timeZone: string): Promise<MicrosoftGraph.Event[] | undefined> {
         try {
           // GET /me/calendarview?startDateTime=''&endDateTime=''
           // &$select=subject,organizer,start,end
           // &$orderby=start/dateTime
           // &$top=50
-          let result =  await this.graphClient
+          const result =  await this.graphClient
             .api('/me/calendarview')
             .header('Prefer', `outlook.timezone="${timeZone}"`)
             .query({
@@ -74,6 +74,7 @@ In dieser Übung werden Sie das Microsoft Graph in die Anwendung integrieren. F�
         } catch (error) {
           this.alertsService.addError('Could not get events', JSON.stringify(error, null, 2));
         }
+        return undefined;
       }
     }
     ```
@@ -81,36 +82,42 @@ In dieser Übung werden Sie das Microsoft Graph in die Anwendung integrieren. F�
     Überlegen Sie sich, was dieser Code macht.
 
     - Es initialisiert einen Graph-Client im Konstruktor für den Dienst.
-    - Es implementiert eine `getCalendarView` Funktion, die den Graph-Client wie folgt verwendet:
+    - Es implementiert eine `getCalendarView` Funktion, die den Graph-Client auf folgende Weise verwendet:
       - Die URL, die aufgerufen wird, lautet `/me/calendarview`.
-      - Die `header` -Methode enthält die `Prefer: outlook.timezone` Kopfzeile, wodurch die Anfangs-und Endzeiten der zurückgegebenen Ereignisse in der bevorzugten Zeitzone des Benutzers liegen.
-      - Die `query` -Methode fügt die `startDateTime` Parameter and hinzu und `endDateTime` definiert das Zeitfenster für die Kalenderansicht.
-      - Die `select` -Methode schränkt die für die einzelnen Ereignisse zurückgegebenen Felder auf genau diejenigen ein, die die Ansicht tatsächlich verwendet wird.
-      - Die `orderby` -Methode sortiert die Ergebnisse nach dem Startzeitpunkt.
+      - Die -Methode enthält den Header, wodurch die Start- und Endzeiten der zurückgegebenen Ereignisse in der bevorzugten Zeitzone des Benutzers `header` `Prefer: outlook.timezone` enthalten sind.
+      - Die -Methode fügt die Parameter and hinzu und definiert das `query` `startDateTime` `endDateTime` Zeitfenster für die Kalenderansicht.
+      - Die Methode beschränkt die für jedes Ereignis zurückgegebenen Felder auf die Felder, die `select` von der Ansicht tatsächlich verwendet werden.
+      - Die `orderby` Methode sortiert die Ergebnisse nach Startzeit.
 
-1. Erstellen Sie eine Winkel Komponente zum Aufrufen dieser neuen Methode, und zeigen Sie die Ergebnisse des Anrufs an. Führen Sie den folgenden Befehl in der CLI aus.
+1. Erstellen Sie eine Angular-Komponente, um diese neue Methode auf aufruft und die Ergebnisse des Aufrufs anzeigen. Führen Sie den folgenden Befehl in Ihrer CLI aus.
 
     ```Shell
     ng generate component calendar
     ```
 
-1. Nachdem der Befehl abgeschlossen ist, fügen Sie die Komponente dem `routes` Array in **./src/App/App-Routing.Module.TS**.
+1. Fügen Sie nach Abschluss des Befehls die Komponente dem `routes` Array in **./src/app/app-routing.module.ts hinzu.**
 
     ```typescript
     import { CalendarComponent } from './calendar/calendar.component';
 
     const routes: Routes = [
       { path: '', component: HomeComponent },
-      { path: 'calendar', component: CalendarComponent }
+      { path: 'calendar', component: CalendarComponent },
     ];
     ```
 
-1. Öffnen Sie **./src/App/Calendar/Calendar.Component.TS** , und ersetzen Sie den Inhalt durch Folgendes.
+1. Öffnen **Sie ./tsconfig.jsein,** und fügen Sie dem Objekt die folgende Eigenschaft `compilerOptions` hinzu.
+
+    ```json
+    "resolveJsonModule": true
+    ```
+
+1. Öffnen **Sie ./src/app/calendar/calendar.component.ts,** und ersetzen Sie den Inhalt durch Folgendes.
 
     ```typescript
     import { Component, OnInit } from '@angular/core';
     import * as moment from 'moment-timezone';
-    import { findOneIana } from 'windows-iana';
+    import { findIana } from 'windows-iana';
     import * as MicrosoftGraph from '@microsoft/microsoft-graph-types';
 
     import { AuthService } from '../auth.service';
@@ -124,7 +131,7 @@ In dieser Übung werden Sie das Microsoft Graph in die Anwendung integrieren. F�
     })
     export class CalendarComponent implements OnInit {
 
-      public events: MicrosoftGraph.Event[];
+      public events?: MicrosoftGraph.Event[];
 
       constructor(
         private authService: AuthService,
@@ -133,8 +140,8 @@ In dieser Übung werden Sie das Microsoft Graph in die Anwendung integrieren. F�
 
       ngOnInit() {
         // Convert the user's timezone to IANA format
-        const ianaName = findOneIana(this.authService.user.timeZone);
-        const timeZone = ianaName!.valueOf() || this.authService.user.timeZone;
+        const ianaName = findIana(this.authService.user?.timeZone ?? 'UTC');
+        const timeZone = ianaName![0].valueOf() || this.authService.user?.timeZone || 'UTC';
 
         // Get midnight on the start of the current week in the user's timezone,
         // but in UTC. For example, for Pacific Standard Time, the time value would be
@@ -145,7 +152,7 @@ In dieser Übung werden Sie das Microsoft Graph in die Anwendung integrieren. F�
         this.graphService.getCalendarView(
           startOfWeek.format(),
           endOfWeek.format(),
-          this.authService.user.timeZone)
+          this.authService.user?.timeZone ?? 'UTC')
             .then((events) => {
               this.events = events;
               // Temporary to display raw results
@@ -155,24 +162,24 @@ In dieser Übung werden Sie das Microsoft Graph in die Anwendung integrieren. F�
     }
     ```
 
-Im Moment wird dadurch nur das Array von Ereignissen in JSON auf der Seite gerendert. Speichern Sie die Änderungen, und starten Sie die App neu. Melden Sie sich an, und klicken Sie in der Navigationsleiste auf den Link **Kalender** . Wenn alles funktioniert, sollte ein JSON-Abbild von Ereignissen im Kalender des Benutzers angezeigt werden.
+Damit wird derzeit nur das Array von Ereignissen in JSON auf der Seite gerendert. Speichern Sie die Änderungen, und starten Sie die App neu. Melden Sie sich an, **und** klicken Sie in der Navigationsleiste auf den Link Kalender. Wenn alles funktioniert, sollte ein JSON-Abbild von Ereignissen im Kalender des Benutzers angezeigt werden.
 
 ## <a name="display-the-results"></a>Anzeigen der Ergebnisse
 
-Jetzt können Sie die `CalendarComponent` Komponente aktualisieren, um die Ereignisse auf benutzerfreundlichere Weise anzuzeigen.
+Jetzt können Sie die Komponente so aktualisieren, dass die Ereignisse `CalendarComponent` benutzerfreundlicher angezeigt werden.
 
-1. Entfernen Sie den temporären Code, der eine Warnung von der `ngOnInit` Funktion hinzufügt. Die aktualisierte Funktion sollte wie folgt aussehen.
+1. Entfernen Sie den temporären Code, der eine Warnung aus der Funktion `ngOnInit` hinzufügt. Ihre aktualisierte Funktion sollte wie dies aussehen.
 
     :::code language="typescript" source="../demo/graph-tutorial/src/app/calendar/calendar.component.ts" id="ngOnInitSnippet":::
 
-1. Fügen Sie der-Klasse eine Funktion hinzu `CalendarComponent` , um ein `DateTimeTimeZone` Objekt in eine ISO-Zeichenfolge zu formatieren.
+1. Fügen Sie der Klasse eine Funktion `CalendarComponent` hinzu, um ein `DateTimeTimeZone` Objekt in eine ISO-Zeichenfolge zu formatieren.
 
     :::code language="typescript" source="../demo/graph-tutorial/src/app/calendar/calendar.component.ts" id="formatDateTimeTimeZoneSnippet":::
 
-1. Öffnen Sie **./src/App/Calendar/calendar.component.html** , und ersetzen Sie den Inhalt durch Folgendes.
+1. Öffnen **Sie ./src/app/calendar/calendar.component.html,** und ersetzen Sie den Inhalt durch Folgendes.
 
     :::code language="html" source="../demo/graph-tutorial/src/app/calendar/calendar.component.html" id="calendarHtml":::
 
-Dadurch wird die Auflistung von Ereignissen durchlaufen, und für jede einzelne Tabelle wird eine Tabellenzeile hinzugefügt. Speichern Sie die Änderungen, und starten Sie die APP neu. Klicken Sie auf den Link **Kalender** , und die APP sollte jetzt eine Tabelle mit Ereignissen rendern.
+Dadurch wird die Auflistung von Ereignissen in einer Schleife durchlauft und für jedes Ereignis eine Tabellenzeile hinzufügt. Speichern Sie die Änderungen, und starten Sie die App neu. Klicken Sie auf den **Link Kalender,** und die App sollte nun eine Tabelle mit Ereignissen rendern.
 
 ![Ein Screenshot der Tabelle mit Ereignissen](./images/add-msgraph-01.png)

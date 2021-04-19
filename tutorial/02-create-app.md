@@ -1,49 +1,51 @@
 <!-- markdownlint-disable MD002 MD041 -->
 
-In diesem Abschnitt erstellen Sie ein neues schräges Projekt.
+In diesem Abschnitt erstellen Sie ein neues Angular-Projekt.
 
-1. Öffnen Sie die Befehlszeilenschnittstelle (CLI), navigieren Sie zu einem Verzeichnis, in dem Sie Berechtigungen zum Erstellen von Dateien haben, und führen Sie die folgenden Befehle aus, um das Tool für die [eckige CLI](https://www.npmjs.com/package/@angular/cli) zu installieren und eine neue Winkel-APP zu erstellen.
+1. Öffnen Sie die Befehlszeilenschnittstelle (CLI), navigieren Sie zu einem Verzeichnis, in dem Sie über die Rechte zum Erstellen von Dateien verfügen, und führen Sie die folgenden Befehle aus, um das [Angular CLI-Tool](https://www.npmjs.com/package/@angular/cli) zu installieren und eine neue Angular-App zu erstellen.
 
     ```Shell
-    npm install -g @angular/cli@10.1.7
+    npm install -g @angular/cli@11.2.9
     ng new graph-tutorial
     ```
 
-1. In der eckigen CLI werden weitere Informationen angefordert. Beantworten Sie die Anweisungen wie folgt.
+1. Die Angular CLI fordert weitere Informationen auf. Beantworten Sie die Eingabeaufforderungen wie folgt.
 
     ```Shell
+    ? Do you want to enforce stricter type checking and stricter bundle budgets in the workspace? Yes
     ? Would you like to add Angular routing? Yes
     ? Which stylesheet format would you like to use? CSS
     ```
 
-1. Nachdem der Befehl abgeschlossen ist, wechseln Sie `graph-tutorial` in das Verzeichnis in der CLI, und führen Sie den folgenden Befehl aus, um einen lokalen Webserver zu starten.
+1. Wechseln Sie nach Abschluss des Befehls in das Verzeichnis in Der CLI, und führen Sie den folgenden Befehl aus, um einen `graph-tutorial` lokalen Webserver zu starten.
 
     ```Shell
     ng serve --open
     ```
 
-1. Der Standardbrowser wird [https://localhost:4200/](https://localhost:4200) mit einer standardmäßigen eckigen Seite geöffnet. Wenn Ihr Browser nicht geöffnet wird, öffnen Sie ihn, und navigieren Sie zu, um [https://localhost:4200/](https://localhost:4200) zu überprüfen, ob die neue APP funktioniert.
+1. Ihr Standardbrowser wird mit [https://localhost:4200/](https://localhost:4200) einer standardmäßigen Angular-Seite geöffnet. Wenn Ihr Browser nicht geöffnet wird, öffnen Sie ihn, und navigieren Sie zu, um zu überprüfen, ob [https://localhost:4200/](https://localhost:4200) die neue App funktioniert.
 
-## <a name="add-node-packages"></a>Hinzufügen von Knoten Paketen
+## <a name="add-node-packages"></a>Hinzufügen von Knotenpaketen
 
-Bevor Sie fortfahren, installieren Sie einige zusätzliche Pakete, die Sie später verwenden werden:
+Installieren Sie vor dem Wechsel einige zusätzliche Pakete, die Sie später verwenden werden:
 
-- [Bootstrap](https://github.com/twbs/bootstrap) für Styling und allgemeine Komponenten.
-- [ng-Bootstrap](https://github.com/ng-bootstrap/ng-bootstrap) für die Verwendung von Bootstrap-Komponenten aus eckig.
-- [Zeitpunkt](https://github.com/moment/moment) für die Formatierung von Datums-und Uhrzeitangaben.
-- [Windows – IANA](https://github.com/rubenillodo/windows-iana)
-- [msal-Winkel](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) für die Authentifizierung bei Azure Active Directory und zum Abrufen von Zugriffstoken.
-- [Microsoft-Graph-Client](https://github.com/microsoftgraph/msgraph-sdk-javascript) zum tätigen von Anrufen an Microsoft Graph.
+- [bootstrap](https://github.com/twbs/bootstrap) für Formatieren und allgemeine Komponenten.
+- [ng-bootstrap](https://github.com/ng-bootstrap/ng-bootstrap) für die Verwendung von Bootstrap-Komponenten von Angular.
+- [Zeitpunkt](https://github.com/moment/moment) für die Formatierung von Datums- und Zeitangaben.
+- [windows-iana](https://github.com/rubenillodo/windows-iana)
+- [msal-angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) für die Authentifizierung bei Azure Active Directory und das Abrufen von Zugriffstoken.
+- [microsoft-graph-client](https://github.com/microsoftgraph/msgraph-sdk-javascript) zum Aufrufen von Microsoft Graph.
 
-1. Führen Sie die folgenden Befehle in der CLI aus.
+1. Führen Sie die folgenden Befehle in Ihrer CLI aus.
 
     ```Shell
-    npm install bootstrap@4.5.3 @ng-bootstrap/ng-bootstrap@7.0.0 msal@1.4.2 @azure/msal-angular@1.1.1
-    npm install moment@2.29.1 moment-timezone@0.5.31 windows-iana@4.2.1
-    npm install @microsoft/microsoft-graph-client@2.1.0 @microsoft/microsoft-graph-types@1.24.0
+    npm install bootstrap@4.6.0 @ng-bootstrap/ng-bootstrap@9.1.0
+    npm install @azure/msal-browser@2.14.0 @azure/msal-angular@2.0.0-beta.4
+    npm install moment-timezone@0.5.33 windows-iana@5.0.1
+    npm install @microsoft/microsoft-graph-client@2.2.1 @microsoft/microsoft-graph-types@1.35.0
     ```
 
-1. Führen Sie den folgenden Befehl in der CLI aus, um das eckige Lokalisierungspaket hinzuzufügen (erforderlich für ng-Bootstrap).
+1. Führen Sie den folgenden Befehl in Ihrer CLI aus, um das Angular-Lokalisierungspaket hinzuzufügen (erforderlich für ng-bootstrap).
 
     ```Shell
     ng add @angular/localize
@@ -51,13 +53,13 @@ Bevor Sie fortfahren, installieren Sie einige zusätzliche Pakete, die Sie spät
 
 ## <a name="design-the-app"></a>Entwerfen der App
 
-In diesem Abschnitt erstellen Sie die Benutzeroberfläche für die app.
+In diesem Abschnitt erstellen Sie die Benutzeroberfläche für die App.
 
-1. Öffnen Sie **/src/Styles.CSS** , und fügen Sie die folgenden Zeilen hinzu.
+1. Öffnen **Sie ./src/styles.css,** und fügen Sie die folgenden Zeilen hinzu.
 
     :::code language="css" source="../demo/graph-tutorial/src/styles.css":::
 
-1. Fügen Sie das Bootstrap-Modul zur APP hinzu. Öffnen Sie **./src/App/app.Module.TS** , und ersetzen Sie den Inhalt durch Folgendes.
+1. Fügen Sie der App das Bootstrap-Modul hinzu. Öffnen **Sie ./src/app/app.module.ts,** und ersetzen Sie dessen Inhalt durch Folgendes.
 
     ```typescript
     import { BrowserModule } from '@angular/platform-browser';
@@ -84,17 +86,17 @@ In diesem Abschnitt erstellen Sie die Benutzeroberfläche für die app.
     export class AppModule { }
     ```
 
-1. Erstellen Sie eine neue Datei im Ordner **./src/App** mit dem Namen **User. TS** , und fügen Sie den folgenden Code hinzu.
+1. Erstellen Sie eine neue Datei im **Ordner ./src/app** mit dem Namen **user.ts,** und fügen Sie den folgenden Code hinzu.
 
-    :::code language="typescript" source="../demo/graph-tutorial/src/app/user.ts" id="user":::
+    :::code language="typescript" source="../demo/graph-tutorial/src/app/user.ts" id="UserSnippet":::
 
-1. Erstellen Sie eine Winkel Komponente für die obere Navigationsleiste auf der Seite. Führen Sie in der CLI den folgenden Befehl aus.
+1. Generieren Sie eine Angular-Komponente für die oberste Navigation auf der Seite. Führen Sie in Ihrer CLI den folgenden Befehl aus.
 
     ```Shell
     ng generate component nav-bar
     ```
 
-1. Nachdem der Befehl abgeschlossen ist, öffnen Sie **./src/App/NAV-Bar/NAV-Bar.Component.TS** , und ersetzen Sie den Inhalt durch Folgendes.
+1. Öffnen Sie nach Abschluss des Befehls **./src/app/nav-bar/nav-bar.component.ts,** und ersetzen Sie den Inhalt durch Folgendes.
 
     ```typescript
     import { Component, OnInit } from '@angular/core';
@@ -109,19 +111,15 @@ In diesem Abschnitt erstellen Sie die Benutzeroberfläche für die app.
     export class NavBarComponent implements OnInit {
 
       // Should the collapsed nav show?
-      showNav: boolean;
+      showNav: boolean = false;
       // Is a user logged in?
-      authenticated: boolean;
+      authenticated: boolean = false;
       // The user
-      user: User;
+      user?: User = undefined;
 
       constructor() { }
 
-      ngOnInit() {
-        this.showNav = false;
-        this.authenticated = false;
-        this.user = null;
-      }
+      ngOnInit() { }
 
       // Used by the Bootstrap navbar-toggler button to hide/show
       // the nav in a collapsed state
@@ -135,29 +133,30 @@ In diesem Abschnitt erstellen Sie die Benutzeroberfläche für die app.
         this.user = {
           displayName: 'Adele Vance',
           email: 'AdeleV@contoso.com',
-          avatar: null
+          avatar: '',
+          timeZone: ''
         };
       }
 
       signOut(): void {
         // Temporary
         this.authenticated = false;
-        this.user = null;
+        this.user = undefined;
       }
     }
     ```
 
-1. Öffnen Sie **./src/App/NAV-Bar/nav-bar.component.html** , und ersetzen Sie den Inhalt durch Folgendes.
+1. Öffnen **Sie ./src/app/nav-bar/nav-bar.component.html,** und ersetzen Sie den Inhalt durch Folgendes.
 
     :::code language="html" source="../demo/graph-tutorial/src/app/nav-bar/nav-bar.component.html" id="navHtml":::
 
-1. Erstellen Sie eine Startseite für die app. Führen Sie den folgenden Befehl in der CLI aus.
+1. Erstellen Sie eine Homepage für die App. Führen Sie den folgenden Befehl in Ihrer CLI aus.
 
     ```Shell
     ng generate component home
     ```
 
-1. Nachdem der Befehl abgeschlossen ist, öffnen Sie **./src/App/Home/Home.Component.TS** , und ersetzen Sie den Inhalt durch Folgendes.
+1. Öffnen Sie nach Abschluss des Befehls **./src/app/home/home.component.ts,** und ersetzen Sie den Inhalt durch Folgendes.
 
     ```typescript
     import { Component, OnInit } from '@angular/core';
@@ -172,61 +171,60 @@ In diesem Abschnitt erstellen Sie die Benutzeroberfläche für die app.
     export class HomeComponent implements OnInit {
 
       // Is a user logged in?
-      authenticated: boolean;
+      authenticated: boolean = false;
       // The user
-      user: any;
+      user?: User = undefined;
 
       constructor() { }
 
-      ngOnInit() {
-        this.authenticated = false;
-        this.user = {};
-      }
+      ngOnInit() { }
 
       signIn(): void {
         // Temporary
         this.authenticated = true;
         this.user = {
           displayName: 'Adele Vance',
-          email: 'AdeleV@contoso.com'
+          email: 'AdeleV@contoso.com',
+          avatar: '',
+          timeZone: ''
         };
       }
     }
     ```
 
-1. Öffnen Sie **./src/App/Home/home.component.html** , und ersetzen Sie den Inhalt durch Folgendes.
+1. Öffnen **Sie ./src/app/home/home.component.html,** und ersetzen Sie den Inhalt durch Folgendes.
 
     :::code language="html" source="../demo/graph-tutorial/src/app/home/home.component.html" id="homeHtml":::
 
-1. Erstellen Sie eine einfache `Alert` Klasse. Erstellen Sie eine neue Datei im Verzeichnis **./src/App** mit dem Namen **Alert. TS** , und fügen Sie den folgenden Code hinzu.
+1. Erstellen Sie eine einfache `Alert` Klasse. Erstellen Sie eine neue Datei im **Verzeichnis ./src/app** mit dem Namen **alert.ts,** und fügen Sie den folgenden Code hinzu.
 
-    :::code language="typescript" source="../demo/graph-tutorial/src/app/alert.ts" id="alert":::
+    :::code language="typescript" source="../demo/graph-tutorial/src/app/alert.ts" id="AlertSnippet":::
 
-1. Erstellen Sie einen Warnungsdienst, den die APP zum Anzeigen von Nachrichten an den Benutzer verwenden kann. Führen Sie in der CLI den folgenden Befehl aus.
+1. Erstellen Sie einen Benachrichtigungsdienst, den die App zum Anzeigen von Nachrichten für den Benutzer verwenden kann. Führen Sie in Ihrer CLI den folgenden Befehl aus.
 
     ```Shell
     ng generate service alerts
     ```
 
-1. Öffnen Sie **./src/App/Alerts.Service.TS** , und ersetzen Sie den Inhalt durch Folgendes.
+1. Öffnen **Sie ./src/app/alerts.service.ts,** und ersetzen Sie den Inhalt durch Folgendes.
 
     :::code language="typescript" source="../demo/graph-tutorial/src/app/alerts.service.ts" id="alertsService":::
 
-1. Generiert eine Alerts-Komponente zum Anzeigen von Warnungen. Führen Sie in der CLI den folgenden Befehl aus.
+1. Generieren Sie eine Warnungskomponente, um Warnungen anzuzeigen. Führen Sie in Ihrer CLI den folgenden Befehl aus.
 
     ```Shell
     ng generate component alerts
     ```
 
-1. Nachdem der Befehl abgeschlossen ist, öffnen Sie **./src/App/Alerts/Alerts.Component.TS** , und ersetzen Sie den Inhalt durch Folgendes.
+1. Öffnen Sie nach Abschluss des Befehls **./src/app/alerts/alerts.component.ts,** und ersetzen Sie den Inhalt durch Folgendes.
 
-    :::code language="typescript" source="../demo/graph-tutorial/src/app/alerts/alerts.component.ts" id="alertComponent":::
+    :::code language="typescript" source="../demo/graph-tutorial/src/app/alerts/alerts.component.ts" id="AlertsComponentSnippet":::
 
-1. Öffnen Sie **./src/App/Alerts/alerts.component.html** , und ersetzen Sie den Inhalt durch Folgendes.
+1. Öffnen **Sie ./src/app/alerts/alerts.component.html,** und ersetzen Sie den Inhalt durch Folgendes.
 
-    :::code language="html" source="../demo/graph-tutorial/src/app/alerts/alerts.component.html" id="alertHtml":::
+    :::code language="html" source="../demo/graph-tutorial/src/app/alerts/alerts.component.html" id="AlertHtml":::
 
-1. Öffnen Sie **./src/App/App-Routing.Module.TS** , und ersetzen Sie die- `const routes: Routes = [];` Codezeile durch den folgenden Code.
+1. Öffnen **Sie ./src/app/app-routing.module.ts,** und ersetzen Sie die `const routes: Routes = [];` Zeile durch den folgenden Code.
 
     ```typescript
     import { HomeComponent } from './home/home.component';
@@ -236,12 +234,12 @@ In diesem Abschnitt erstellen Sie die Benutzeroberfläche für die app.
     ];
     ```
 
-1. Öffnen Sie **./src/App/app.component.html** , und ersetzen Sie den gesamten Inhalt durch Folgendes.
+1. Öffnen **Sie ./src/app/app.component.html,** und ersetzen Sie den gesamten Inhalt durch Folgendes.
 
-    :::code language="html" source="../demo/graph-tutorial/src/app/app.component.html" id="appHtml":::
+    :::code language="html" source="../demo/graph-tutorial/src/app/app.component.html" id="AppHtml":::
 
-1. Fügen Sie eine Bilddatei Ihrer Wahl namens **no-profile-photo.png** im Verzeichnis **./src/Assets** hinzu. Dieses Bild wird als Foto des Benutzers verwendet, wenn der Benutzer in Microsoft Graph kein Foto hat.
+1. Fügen Sie eine Bilddatei Ihrer Wahl namens **no-profile-photo.png** **im Verzeichnis ./src/assets** hinzu. Dieses Bild wird als Foto des Benutzers verwendet, wenn der Benutzer kein Foto in Microsoft Graph hat.
 
-Speichern Sie alle Änderungen, und aktualisieren Sie die Seite. Nun sollte die APP sehr unterschiedlich aussehen.
+Speichern Sie alle Änderungen, und aktualisieren Sie die Seite. Jetzt sollte die App ganz anders aussehen.
 
 ![Screenshot der neu gestalteten Homepage](images/create-app-01.png)

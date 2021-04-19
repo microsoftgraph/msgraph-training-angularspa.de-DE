@@ -1,27 +1,27 @@
 # <a name="graphtutorial"></a>GraphTutorial
 
-Dieses Projekt wurde mit einer [eckigen CLI](https://github.com/angular/angular-cli) -Version 10.1.7 generiert.
+Dieses Projekt wurde mit [Angular CLI](https://github.com/angular/angular-cli) Version 11.2.9 generiert.
 
 ## <a name="development-server"></a>Entwicklungsserver
 
-`ng serve`Für einen Entwicklungsserver ausführen. Navigieren Sie zu `http://localhost:4200/`. Die APP wird automatisch neu laden, wenn Sie eine der Quelldateien ändern.
+Führen `ng serve` Sie für einen Entwicklungsserver aus. Navigieren Sie zu `http://localhost:4200/`. Die App wird automatisch neu geladen, wenn Sie eine der Quelldateien ändern.
 
-## <a name="code-scaffolding"></a>Code Gerüste
+## <a name="code-scaffolding"></a>Codegerüst
 
-Ausführen `ng generate component component-name` , um eine neue Komponente zu generieren. Sie können auch verwenden `ng generate directive|pipe|service|class|guard|interface|enum|module` .
+Führen `ng generate component component-name` Sie aus, um eine neue Komponente zu generieren. Sie können auch `ng generate directive|pipe|service|class|guard|interface|enum|module` verwenden.
 
 ## <a name="build"></a>Erstellen
 
-Ausführen `ng build` , um das Projekt zu erstellen. Die Erstellungs Artefakte werden im `dist/` Verzeichnis gespeichert. Verwenden Sie das `--prod` Flag für einen Produktions-Build.
+Führen `ng build` Sie aus, um das Projekt zu erstellen. Die Buildartefakte werden im Verzeichnis `dist/` gespeichert. Verwenden Sie das `--prod` Flag für einen Produktions build.
 
-## <a name="running-unit-tests"></a>Durchführen von Komponententests
+## <a name="running-unit-tests"></a>Ausführen von Komponententests
 
-Ausführen `ng test` , um die Komponententests über [Karma](https://karma-runner.github.io)auszuführen.
+Führen `ng test` Sie aus, um die Komponententests über [Karma auszuführen.](https://karma-runner.github.io)
 
-## <a name="running-end-to-end-tests"></a>Durchführen von End-to-End-Tests
+## <a name="running-end-to-end-tests"></a>Ausführen von End-to-End-Tests
 
-Ausführen `ng e2e` , um die End-to-End-Tests über [Protractor](http://www.protractortest.org/)auszuführen.
+Führen `ng e2e` Sie aus, um die End-to-End-Tests über [Protractor auszuführen.](http://www.protractortest.org/)
 
 ## <a name="further-help"></a>Weitere Hilfe
 
-Weitere Hilfe zur Winkel-CLI-Verwendung erhalten Sie, `ng help` oder gehen Sie zur [eckigen CLI-Infodatei](https://github.com/angular/angular-cli/blob/master/README.md).
+Weitere Hilfe zur Verwendung von Angular CLI finden Sie auf der `ng help` Seite Angular CLI Overview and Command [Reference.](https://angular.io/cli)
