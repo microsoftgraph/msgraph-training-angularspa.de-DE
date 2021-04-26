@@ -1,15 +1,15 @@
 <!-- markdownlint-disable MD002 MD041 -->
 
-In diesem Abschnitt erstellen Sie ein neues Angular-Projekt.
+In diesem Abschnitt erstellen Sie ein neues Angular Projekt.
 
-1. Öffnen Sie die Befehlszeilenschnittstelle (CLI), navigieren Sie zu einem Verzeichnis, in dem Sie über die Rechte zum Erstellen von Dateien verfügen, und führen Sie die folgenden Befehle aus, um das [Angular CLI-Tool](https://www.npmjs.com/package/@angular/cli) zu installieren und eine neue Angular-App zu erstellen.
+1. Öffnen Sie die Befehlszeilenschnittstelle (CLI), navigieren Sie zu einem Verzeichnis, in dem Sie über die Rechte zum Erstellen von Dateien verfügen, und führen Sie die folgenden Befehle aus, um das [Angular](https://www.npmjs.com/package/@angular/cli) CLI-Tool zu installieren und eine neue Angular zu erstellen.
 
     ```Shell
     npm install -g @angular/cli@11.2.9
     ng new graph-tutorial
     ```
 
-1. Die Angular CLI fordert weitere Informationen auf. Beantworten Sie die Eingabeaufforderungen wie folgt.
+1. Die Angular CLI fordert weitere Informationen an. Beantworten Sie die Eingabeaufforderungen wie folgt.
 
     ```Shell
     ? Do you want to enforce stricter type checking and stricter bundle budgets in the workspace? Yes
@@ -23,29 +23,29 @@ In diesem Abschnitt erstellen Sie ein neues Angular-Projekt.
     ng serve --open
     ```
 
-1. Ihr Standardbrowser wird mit [https://localhost:4200/](https://localhost:4200) einer standardmäßigen Angular-Seite geöffnet. Wenn Ihr Browser nicht geöffnet wird, öffnen Sie ihn, und navigieren Sie zu, um zu überprüfen, ob [https://localhost:4200/](https://localhost:4200) die neue App funktioniert.
+1. Ihr Standardbrowser wird mit [https://localhost:4200/](https://localhost:4200) einer Standardseite Angular geöffnet. Wenn Ihr Browser nicht geöffnet wird, öffnen Sie ihn, und navigieren Sie zu, um zu überprüfen, ob [https://localhost:4200/](https://localhost:4200) die neue App funktioniert.
 
 ## <a name="add-node-packages"></a>Hinzufügen von Knotenpaketen
 
 Installieren Sie vor dem Wechsel einige zusätzliche Pakete, die Sie später verwenden werden:
 
 - [bootstrap](https://github.com/twbs/bootstrap) für Formatieren und allgemeine Komponenten.
-- [ng-bootstrap](https://github.com/ng-bootstrap/ng-bootstrap) für die Verwendung von Bootstrap-Komponenten von Angular.
+- [ng-bootstrap](https://github.com/ng-bootstrap/ng-bootstrap) für die Verwendung von Bootstrap-Komponenten Angular.
 - [Zeitpunkt](https://github.com/moment/moment) für die Formatierung von Datums- und Zeitangaben.
 - [windows-iana](https://github.com/rubenillodo/windows-iana)
-- [msal-angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) für die Authentifizierung bei Azure Active Directory und das Abrufen von Zugriffstoken.
-- [microsoft-graph-client](https://github.com/microsoftgraph/msgraph-sdk-javascript) zum Aufrufen von Microsoft Graph.
+- [msal-angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular/README.md) für die Authentifizierung Azure Active Directory und Abrufen von Zugriffstoken.
+- [microsoft-graph-client](https://github.com/microsoftgraph/msgraph-sdk-javascript) zum Aufrufen von Microsoft-Graph.
 
 1. Führen Sie die folgenden Befehle in Ihrer CLI aus.
 
     ```Shell
     npm install bootstrap@4.6.0 @ng-bootstrap/ng-bootstrap@9.1.0
     npm install @azure/msal-browser@2.14.0 @azure/msal-angular@2.0.0-beta.4
-    npm install moment-timezone@0.5.33 windows-iana@5.0.1
+    npm install moment-timezone@0.5.33 windows-iana@5.0.2
     npm install @microsoft/microsoft-graph-client@2.2.1 @microsoft/microsoft-graph-types@1.35.0
     ```
 
-1. Führen Sie den folgenden Befehl in Ihrer CLI aus, um das Angular-Lokalisierungspaket hinzuzufügen (erforderlich für ng-bootstrap).
+1. Führen Sie den folgenden Befehl in Ihrer CLI aus, um das Angular (erforderlich für ng-bootstrap) hinzuzufügen.
 
     ```Shell
     ng add @angular/localize
@@ -90,7 +90,7 @@ In diesem Abschnitt erstellen Sie die Benutzeroberfläche für die App.
 
     :::code language="typescript" source="../demo/graph-tutorial/src/app/user.ts" id="UserSnippet":::
 
-1. Generieren Sie eine Angular-Komponente für die oberste Navigation auf der Seite. Führen Sie in Ihrer CLI den folgenden Befehl aus.
+1. Generieren Sie Angular komponente für die oberste Navigation auf der Seite. Führen Sie in Ihrer CLI den folgenden Befehl aus.
 
     ```Shell
     ng generate component nav-bar
@@ -238,7 +238,7 @@ In diesem Abschnitt erstellen Sie die Benutzeroberfläche für die App.
 
     :::code language="html" source="../demo/graph-tutorial/src/app/app.component.html" id="AppHtml":::
 
-1. Fügen Sie eine Bilddatei Ihrer Wahl namens **no-profile-photo.png** **im Verzeichnis ./src/assets** hinzu. Dieses Bild wird als Foto des Benutzers verwendet, wenn der Benutzer kein Foto in Microsoft Graph hat.
+1. Fügen Sie eine Bilddatei Ihrer Wahl namens **no-profile-photo.png** **im Verzeichnis ./src/assets** hinzu. Dieses Bild wird als Foto des Benutzers verwendet, wenn der Benutzer kein Foto in Microsoft Graph.
 
 Speichern Sie alle Änderungen, und aktualisieren Sie die Seite. Jetzt sollte die App ganz anders aussehen.
 
